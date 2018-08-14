@@ -45,3 +45,21 @@ def prod(l):
 	for x in l:
 		p=p*x
 	return p
+
+def primegenerator(n,maxp=None):
+	plist = []
+	m = 2
+	if(n<0 and maxp==None):
+		return
+	while (len(plist)<n or n<0) and (maxp==None or m<maxp):
+		p=True
+		for j in plist:
+			if m%j==0:
+				p=False
+				break
+			if j>math.sqrt(m):
+				break
+		if p:
+			plist.append(m)
+			yield m		
+		m=m+1
