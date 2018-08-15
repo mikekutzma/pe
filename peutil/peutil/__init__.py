@@ -35,6 +35,14 @@ def primefac(x):
 	plist.append(x)
 	return plist
 
+def factors(m):
+	p = [1]+primefac(m)
+	pold=[]
+	while(p!=pold):
+		pold=p
+		p = sorted(list(set([x*y for x in p for y in p if x*y<=m and m%(x*y)==0])))
+	return p
+
 def countdict(l):
 	if type(l) not in (list,str):
 		raise TypeError('Type must be list or str for countdict.')
